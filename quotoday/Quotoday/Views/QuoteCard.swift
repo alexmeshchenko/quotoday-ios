@@ -17,15 +17,25 @@ struct QuoteCard: View {
     @State private var isRefreshing = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(alignment: .center, spacing: 16) {
             // Текст цитаты
             Text("\"\(quote.text)\"")
                 .font(.system(size: 20, weight: .medium))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .padding(.horizontal, 24)
-                .padding(.vertical, 40)
-                .frame(maxWidth: .infinity, minHeight: 200)
+                .padding(.top, 40)
+                //.frame(maxWidth: .infinity, minHeight: 200)
+            
+            // Автор
+            if !quote.author.isEmpty {
+                Text("— \(quote.author)")
+                    .font(.system(size: 16, weight: .light))
+                    .foregroundColor(.black.opacity(0.6))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 12)
+            }
             
             // Кнопки внизу
             HStack {
@@ -49,7 +59,7 @@ struct QuoteCard: View {
                         isRefreshing = false
                     }
                 }) {
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
                         .font(.system(size: 22))
                         .foregroundColor(.black.opacity(0.7))
                         .rotationEffect(.degrees(isRefreshing ? 360 : 0))
@@ -63,5 +73,25 @@ struct QuoteCard: View {
         .background(Color.appYellow)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+    }
+}
+
+// MARK: - Preview
+
+struct QuoteCard_Previews: PreviewProvider {
+    static var previews: some View {
+        QuoteCard(
+            quote: Quote(
+                id: UUID(),
+                text: "The only limit to our realization of tomorrow is our doubts of today.",
+                author: "Franklin D. Roosevelt",
+                category: "Motivation"
+            ),
+            isBookmarked: true,
+            onBookmarkToggle: {},
+            onRefresh: {}
+        )
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
