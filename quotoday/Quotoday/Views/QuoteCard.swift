@@ -10,6 +10,7 @@ import SwiftUI
 // Карточка цитаты
 struct QuoteCard: View {
     let quote: Quote
+    let searchText: String
     let isBookmarked: Bool
     let onBookmarkToggle: () -> Void
     let onRefresh: () -> Void
@@ -19,22 +20,21 @@ struct QuoteCard: View {
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             // Текст цитаты
-            Text("\"\(quote.text)\"")
+            Text.highlight("\"\(quote.text)\"", matching: searchText)
                 .font(.system(size: 20, weight: .medium))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .padding(.horizontal, 24)
                 .padding(.top, 40)
-            //.frame(maxWidth: .infinity, minHeight: 200)
             
             // Автор
             if !quote.author.isEmpty {
-                Text("— \(quote.author)")
-                    .font(.system(size: 16, weight: .light))
-                    .foregroundColor(.black.opacity(0.6))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 12)
+                Text.highlight("— \(quote.author)", matching: searchText)
+                            .font(.system(size: 16, weight: .light))
+                            .foregroundColor(.black.opacity(0.6))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 24)
+                            .padding(.bottom, 12)
             }
             
             // Кнопки внизу
@@ -100,6 +100,7 @@ struct QuoteCard_Previews: PreviewProvider {
                 author: "Franklin D. Roosevelt",
                 category: "Motivation"
             ),
+            searchText: "doubt", // 🔍 Пример подсветки
             isBookmarked: true,
             onBookmarkToggle: {},
             onRefresh: {}
