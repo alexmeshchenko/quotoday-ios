@@ -10,36 +10,31 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var favoritesManager = FavoritesManager()
     @StateObject private var myQuotesViewModel = MyQuotesViewModel()
-    @State private var selectedTab = 1
+    @State private var selectedTab: Tab = .home
 
     var body: some View {
-        TabView(selection: $selectedTab) {
+            ZStack {
+                Group {
+                    switch selectedTab {
+                    case .favorites:
+                        FavoritesView()
+                    case .home:
+                        HomeView()
+                    case .myQuotes:
+                        MyQuotesView()
+                            .environmentObject(myQuotesViewModel)
+                    }
+                }
+                .environmentObject(favoritesManager)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            FavoritesView()
-                .tabItem {
-                    Image(systemName: "bookmark.fill")
-                        .renderingMode(.template)
+                VStack {
+                    Spacer()
+                    CustomTabBar(selectedTab: $selectedTab)
                 }
-                .tag(0)
-            
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                        .renderingMode(.template)
-                }
-                .tag(1)
-
-            MyQuotesView()
-                .environmentObject(myQuotesViewModel)
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                        .renderingMode(.template)
-                }
-                .tag(2)
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
-        .accentColor(.appGreen)// Зеленый цвет для выбранной вкладки
-        .environmentObject(favoritesManager)
-    }
 }
 
 #Preview {

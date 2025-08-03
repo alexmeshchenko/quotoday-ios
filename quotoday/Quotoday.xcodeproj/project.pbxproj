@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		79766AF22E3E47B700DD8841 /* quotoday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quotoday.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		79766AFF2E3E47BB00DD8841 /* quotodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quotodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		79766B092E3E47BB00DD8841 /* quotodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quotodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79766AF22E3E47B700DD8841 /* Quotoday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotoday.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79766AFF2E3E47BB00DD8841 /* QuotodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79766B092E3E47BB00DD8841 /* QuotodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79766B422E3E584A00DD8841 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -87,9 +87,9 @@
 		79766AF32E3E47B700DD8841 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79766AF22E3E47B700DD8841 /* quotoday.app */,
-				79766AFF2E3E47BB00DD8841 /* quotodayTests.xctest */,
-				79766B092E3E47BB00DD8841 /* quotodayUITests.xctest */,
+				79766AF22E3E47B700DD8841 /* Quotoday.app */,
+				79766AFF2E3E47BB00DD8841 /* QuotodayTests.xctest */,
+				79766B092E3E47BB00DD8841 /* QuotodayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,9 +97,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		79766AF12E3E47B700DD8841 /* quotoday */ = {
+		79766AF12E3E47B700DD8841 /* Quotoday */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79766B132E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotoday" */;
+			buildConfigurationList = 79766B132E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "Quotoday" */;
 			buildPhases = (
 				79766AEE2E3E47B700DD8841 /* Sources */,
 				79766AEF2E3E47B700DD8841 /* Frameworks */,
@@ -112,16 +112,16 @@
 			fileSystemSynchronizedGroups = (
 				79766AF42E3E47B700DD8841 /* Quotoday */,
 			);
-			name = quotoday;
+			name = Quotoday;
 			packageProductDependencies = (
 			);
 			productName = quotoday;
-			productReference = 79766AF22E3E47B700DD8841 /* quotoday.app */;
+			productReference = 79766AF22E3E47B700DD8841 /* Quotoday.app */;
 			productType = "com.apple.product-type.application";
 		};
-		79766AFE2E3E47BB00DD8841 /* quotodayTests */ = {
+		79766AFE2E3E47BB00DD8841 /* QuotodayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79766B162E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotodayTests" */;
+			buildConfigurationList = 79766B162E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "QuotodayTests" */;
 			buildPhases = (
 				79766AFB2E3E47BB00DD8841 /* Sources */,
 				79766AFC2E3E47BB00DD8841 /* Frameworks */,
@@ -135,16 +135,16 @@
 			fileSystemSynchronizedGroups = (
 				79766B022E3E47BB00DD8841 /* QuotodayTests */,
 			);
-			name = quotodayTests;
+			name = QuotodayTests;
 			packageProductDependencies = (
 			);
 			productName = quotodayTests;
-			productReference = 79766AFF2E3E47BB00DD8841 /* quotodayTests.xctest */;
+			productReference = 79766AFF2E3E47BB00DD8841 /* QuotodayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		79766B082E3E47BB00DD8841 /* quotodayUITests */ = {
+		79766B082E3E47BB00DD8841 /* QuotodayUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79766B192E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotodayUITests" */;
+			buildConfigurationList = 79766B192E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "QuotodayUITests" */;
 			buildPhases = (
 				79766B052E3E47BB00DD8841 /* Sources */,
 				79766B062E3E47BB00DD8841 /* Frameworks */,
@@ -158,11 +158,11 @@
 			fileSystemSynchronizedGroups = (
 				79766B0C2E3E47BB00DD8841 /* QuotodayUITests */,
 			);
-			name = quotodayUITests;
+			name = QuotodayUITests;
 			packageProductDependencies = (
 			);
 			productName = quotodayUITests;
-			productReference = 79766B092E3E47BB00DD8841 /* quotodayUITests.xctest */;
+			productReference = 79766B092E3E47BB00DD8841 /* QuotodayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -202,9 +202,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				79766AF12E3E47B700DD8841 /* quotoday */,
-				79766AFE2E3E47BB00DD8841 /* quotodayTests */,
-				79766B082E3E47BB00DD8841 /* quotodayUITests */,
+				79766AF12E3E47B700DD8841 /* Quotoday */,
+				79766AFE2E3E47BB00DD8841 /* QuotodayTests */,
+				79766B082E3E47BB00DD8841 /* QuotodayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -260,12 +260,12 @@
 /* Begin PBXTargetDependency section */
 		79766B012E3E47BB00DD8841 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 79766AF12E3E47B700DD8841 /* quotoday */;
+			target = 79766AF12E3E47B700DD8841 /* Quotoday */;
 			targetProxy = 79766B002E3E47BB00DD8841 /* PBXContainerItemProxy */;
 		};
 		79766B0B2E3E47BB00DD8841 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 79766AF12E3E47B700DD8841 /* quotoday */;
+			target = 79766AF12E3E47B700DD8841 /* Quotoday */;
 			targetProxy = 79766B0A2E3E47BB00DD8841 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79766B132E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotoday" */ = {
+		79766B132E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "Quotoday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79766B142E3E47BB00DD8841 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79766B162E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotodayTests" */ = {
+		79766B162E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "QuotodayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79766B172E3E47BB00DD8841 /* Debug */,
@@ -550,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79766B192E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "quotodayUITests" */ = {
+		79766B192E3E47BB00DD8841 /* Build configuration list for PBXNativeTarget "QuotodayUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79766B1A2E3E47BB00DD8841 /* Debug */,

@@ -41,7 +41,7 @@ struct MyQuotesView: View {
                                 .font(.title)
                                 .foregroundColor(.black)
                                 .frame(width: 60, height: 60)
-                                .background(Color(hex: "C4E538"))
+                                .background(Color.appGreen)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                         }
                         .padding()
