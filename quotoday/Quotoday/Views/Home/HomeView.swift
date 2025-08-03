@@ -19,54 +19,22 @@ struct HomeView: View {
             Group {
                 // Контент
                 if viewModel.isLoading {
-                    VStack {
-                         Spacer()
-                         ProgressView()
-                             .scaleEffect(1.5)
-                         Spacer()
-                     }
+                    HomeLoadingView()
                 } else if let error = viewModel.errorMessage {
-                    VStack(spacing: 16) {
-                        Spacer()
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.largeTitle)
-                            .foregroundColor(.secondary)
-                        Text(error)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
-                        Button("Попробовать снова") {
+                    HomeErrorView(
+                        errorMessage: error,
+                        onRetry: {
                             Task {
                                 await viewModel.loadQuotes()
                             }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.appGreen)
-                        Spacer()
-                    }
-                    .padding()
+                    )
                 } else {
-                    ScrollView {
-                        LazyVStack(spacing: 20) {
-                            ForEach(Array(viewModel.quotes.enumerated()), id: \.element.id) { index, quote in
-                                QuoteCard(
-                                    quote: quote,
-                                    isBookmarked: favoritesManager.isFavorite(quote),
-                                    onBookmarkToggle: {
-                                        withAnimation(.spring(response: 0.3)) {
-                                            favoritesManager.toggleFavorite(quote)
-                                        }
-                                    },
-                                    onRefresh: {
-                                        Task {
-                                            await viewModel.refreshQuote(at: index)
-                                        }
-                                    }
-                                )
-                                .transition(.scale.combined(with: .opacity))
-                            }
-                        }
-                        .padding()
-                    }
+                    HomeContentView(
+                        quotes: viewModel.quotes,
+                        favoritesManager: favoritesManager,
+                        onRefresh: viewModel.refreshQuote
+                    )
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -95,5 +63,13 @@ struct HomeView: View {
             }
             
         }
+    }
+}
+
+// MARK: - Preview
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .environmentObject(FavoritesManager())
     }
 }
