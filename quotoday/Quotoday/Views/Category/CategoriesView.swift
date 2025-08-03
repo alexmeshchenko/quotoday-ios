@@ -14,11 +14,18 @@ struct CategoriesView: View {
     let onSave: (Set<String>) -> Void
     
     // Временное состояние для выбранных категорий
-    @State private var tempSelectedCategories: Set<String> = []
+    @State private var tempSelectedCategories: Set<String>
+    
+    init(selectedCategories: Set<String>, onSave: @escaping (Set<String>) -> Void) {
+        self.selectedCategories = selectedCategories
+        self.onSave = onSave
+        // Инициализируем @State в init
+        self._tempSelectedCategories = State(initialValue: selectedCategories)
+    }
     
     let categories = [
             ("happiness", "😊"),
-            ("motivation", "💪"),
+            ("business", "🤑"),
             ("life", "🌱"),
             ("love", "❤️"),
             ("success", "🏆"),
@@ -56,6 +63,7 @@ struct CategoriesView: View {
                                 }
                             }
                         )
+                        
                     }
                 }
                 .padding(.horizontal)
@@ -74,18 +82,16 @@ struct CategoriesView: View {
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.black)
                         .frame(width: 120, height: 44)
-                        .background(Color.appGreen)
+                        .background(tempSelectedCategories.isEmpty ? Color.gray : Color.appGreen)
                         .cornerRadius(22)
                 }
+                .disabled(tempSelectedCategories.isEmpty)
+                .opacity(tempSelectedCategories.isEmpty ? 0.6 : 1.0)
                 .padding(.bottom, 40)
             }
             .navigationTitle("Categories")
             .navigationBarTitleDisplayMode(.inline)
             
-        }
-        .onAppear {
-            // Копируем текущие выбранные категории во временное состояние
-            tempSelectedCategories = selectedCategories
         }
     }
 }

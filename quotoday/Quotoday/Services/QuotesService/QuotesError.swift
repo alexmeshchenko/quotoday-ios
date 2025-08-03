@@ -15,6 +15,7 @@ enum QuotesError: LocalizedError {
     case decodingFailed
     case noQuotesFound
     case invalidURL
+    case invalidCategory
     
     var errorDescription: String? {
         switch self {
@@ -30,6 +31,8 @@ enum QuotesError: LocalizedError {
             return "Цитаты не найдены"
         case .invalidURL:
             return "Неверный URL запроса"
+        case .invalidCategory:
+            return "Unsupported category"
         }
     }
 }

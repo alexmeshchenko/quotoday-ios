@@ -25,10 +25,10 @@ class QuotesService {
         case imagination, inspirational, intelligence, jealousy, knowledge, leadership, learning
         case legal, life, love, marriage, medical, men, mom, money, morning, movies, success
         
-        // Маппинг не нужен - используем категории напрямую
-        static func fromAppCategory(_ category: String) -> String {
+        static func fromAppCategory(_ category: String) -> String? {
             // Категории из нашего приложения уже соответствуют API категориям
-            return category.lowercased()
+            let normalized = category.lowercased()
+            return APICategory.allCases.first { $0.rawValue == normalized }?.rawValue
         }
     }
     
@@ -87,7 +87,11 @@ class QuotesService {
     
     // Получение цитаты по категории
     func fetchQuote(category: String) async throws -> Quote? {
-        let apiCategory = APICategory.fromAppCategory(category)
+        
+        guard let apiCategory = APICategory.fromAppCategory(category) else {
+            throw QuotesError.invalidCategory
+        }
+        
         guard let url = URL(string: "\(baseURL)?category=\(apiCategory)") else {
             throw QuotesError.invalidURL
         }
@@ -140,3 +144,4 @@ class QuotesService {
         }
     }
 }
+
