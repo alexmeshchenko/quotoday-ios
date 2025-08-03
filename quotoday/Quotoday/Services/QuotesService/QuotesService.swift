@@ -40,18 +40,29 @@ class QuotesService {
         var attempts = 0
         let maxAttempts = count * 10 // Ограничиваем количество попыток
         
+        // DEBUG: Покажем категории
+         let categoryNames = categories.map(\.rawValue).joined(separator: ", ")
+         print("➡️ Загрузка \(count) цитат из категорий: [\(categoryNames)]")
+
         while quotes.count < count && attempts < maxAttempts {
             attempts += 1
             
             do {
                 // Получаем случайную цитату
                 if let quote = try await fetchRandomQuote() {
+                    print("🔍 Попытка \(attempts): \(quote.category) — \"\(quote.text.prefix(40))...\"")
+                    
                     // Проверяем, подходит ли категория
                     if categories.isEmpty || categories.contains(where: { $0.rawValue == quote.category.lowercased() }) {
                         // Проверяем, нет ли уже такой цитаты
                         if !quotes.contains(where: { $0.text == quote.text }) {
+                            print("✅ Добавлена цитата от \(quote.author)")
                             quotes.append(quote)
+                        } else {
+                            print("↩️ Пропущена повторяющаяся цитата")
                         }
+                    } else {
+                        print("⛔️ Категория не входит в список: \(quote.category)")
                     }
                 }
             } catch {
@@ -62,9 +73,11 @@ class QuotesService {
         
         // Если не удалось получить нужное количество цитат
         if quotes.isEmpty {
+            print("❌ Не удалось получить ни одной подходящей цитаты.")
             throw QuotesError.noQuotesFound
         }
         
+        print("🎉 Загружено \(quotes.count) цитат после \(attempts) попыток.")
         return quotes
     }
     
