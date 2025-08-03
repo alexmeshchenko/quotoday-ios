@@ -54,7 +54,7 @@ struct FavoriteQuoteCard: View {
             Button(action: {
                 favoritesManager.removeFromFavorites(quote)
             }) {
-                Label("Удалить из избранного", systemImage: "bookmark")
+                Label("Remove from favorites", systemImage: "bookmark")
             }
         }
         .sheet(isPresented: $showShareSheet) {

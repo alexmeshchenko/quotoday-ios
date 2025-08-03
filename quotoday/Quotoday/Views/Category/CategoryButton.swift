@@ -16,20 +16,21 @@ struct CategoryButton: View {
     
     var body: some View {
         Button(action: action) {
-            HStack {
+            HStack(spacing: 8) {
                 Text(emoji)
                     .font(.title2)
-                Text(title)
-                    .font(.system(size: 18))
-                    .foregroundColor(.primary)
+                Text(title.capitalized)
+                    .font(.system(size: 16, weight: .medium))
                 Spacer()
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 16)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.appGreen : Color.gray.opacity(0.15))
-            )
+            .foregroundColor(isSelected ? .black : .primary)
         }
+        .padding(.horizontal, 20)
+        .frame(height: 44)
+        .background(isSelected
+                    ? Color.appGreen
+                    : (isSelected ? Color.appGreen : Color.gray.opacity(0.15)))
+        .cornerRadius(22)
+        .animation(.easeInOut(duration: 0.2), value: isSelected)
     }
 }

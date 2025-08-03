@@ -22,48 +22,48 @@ struct AddQuoteView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Цитата")) {
+                Section(header: Text("Quote")) {
                     TextEditor(text: $quoteText)
                         .frame(minHeight: 100)
                         .placeholder(when: quoteText.isEmpty) {
-                            Text("Введите текст цитаты...")
+                            Text("Enter the quote text...")
                                 .foregroundColor(.gray)
                         }
                 }
                 
-                Section(header: Text("Автор")) {
-                    TextField("Имя автора", text: $authorText)
+                Section(header: Text("Author")) {
+                    TextField("Author's name", text: $authorText)
                 }
             }
-            .navigationTitle("Новая цитата")
+            .navigationTitle("New quote")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Отмена") {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Сохранить") {
+                    Button("Save") {
                         saveQuote()
                     }
                     .disabled(quoteText.isEmpty || authorText.isEmpty)
                 }
             }
-            .alert("Успешно!", isPresented: $showAlert) {
+            .alert("Success!", isPresented: $showAlert) {
                 Button("OK") {
                     dismiss()
                 }
             } message: {
-                Text("Цитата успешно добавлена")
+                Text("Quote successfully added")
             }
         }
     }
     
     func saveQuote() {
         viewModel.addQuote(text: quoteText.trimmingCharacters(in: .whitespacesAndNewlines),
-                          author: authorText.trimmingCharacters(in: .whitespacesAndNewlines))
+                           author: authorText.trimmingCharacters(in: .whitespacesAndNewlines))
         showAlert = true
     }
 }

@@ -54,9 +54,9 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showCategories) {
                 CategoriesView(
-                    selectedCategories: viewModel.selectedCategories,
-                    onSave: { categories in
-                        viewModel.saveSelectedCategories(categories)
+                    selectedThemes: viewModel.selectedThemes,
+                    onSave: { newThemes in
+                        viewModel.saveSelectedThemes(newThemes)
                     }
                 )
             }

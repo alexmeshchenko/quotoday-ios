@@ -5,7 +5,6 @@
 //  Created by Aleksandr Meshchenko on 03.08.25.
 //
 
-
 import SwiftUI
 
 // MARK: - Loading View
@@ -14,9 +13,9 @@ struct HomeLoadingView: View {
         VStack {
             Spacer()
             ProgressView()
-                .scaleEffect(1.5)
+                .scaleEffect(2)
                 .tint(.appGreen)
-            Text("Загружаем цитаты...")
+            Text("Upload quotes...")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.top, 20)

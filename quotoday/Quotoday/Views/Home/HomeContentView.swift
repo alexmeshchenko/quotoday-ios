@@ -40,7 +40,7 @@ struct HomeContentView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top)
-                .padding(.bottom, 60) // Отступ для TabBar
+                .padding(.bottom, 70) // Отступ для TabBar
             }
         }
     }

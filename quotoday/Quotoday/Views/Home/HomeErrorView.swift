@@ -20,7 +20,7 @@ struct HomeErrorView: View {
                 .font(.system(size: 60))
                 .foregroundColor(.secondary)
             
-            Text("Упс! Что-то пошло не так")
+            Text("Oops! Something went wrong")
                 .font(.title3)
                 .fontWeight(.semibold)
             
@@ -31,7 +31,7 @@ struct HomeErrorView: View {
                 .padding(.horizontal, 40)
             
             Button(action: onRetry) {
-                Label("Попробовать снова", systemImage: "arrow.clockwise")
+                Label("Try again", systemImage: "arrow.clockwise")
                     .font(.system(size: 16, weight: .medium))
             }
             .buttonStyle(.borderedProminent)

@@ -6,35 +6,24 @@
 //
 
 import SwiftUI
-
-// Экран категорий
+// MARK: - CategoriesView
 struct CategoriesView: View {
     @Environment(\.dismiss) var dismiss
-    let selectedCategories: Set<String>
-    let onSave: (Set<String>) -> Void
+    let selectedThemes: Set<QuoteTheme>
+    let onSave: (Set<QuoteTheme>) -> Void
     
-    // Временное состояние для выбранных категорий
-    @State private var tempSelectedCategories: Set<String>
+    @State private var tempSelectedThemes: Set<QuoteTheme>
     
-    init(selectedCategories: Set<String>, onSave: @escaping (Set<String>) -> Void) {
-        self.selectedCategories = selectedCategories
+    init(selectedThemes: Set<QuoteTheme>, onSave: @escaping (Set<QuoteTheme>) -> Void) {
+        self.selectedThemes = selectedThemes
         self.onSave = onSave
-        // Инициализируем @State в init
-        self._tempSelectedCategories = State(initialValue: selectedCategories)
+        self._tempSelectedThemes = State(initialValue: selectedThemes)
     }
-    
-    let categories = [
-            ("happiness", "😊"),
-            ("business", "🤑"),
-            ("life", "🌱"),
-            ("love", "❤️"),
-            ("success", "🏆"),
-            ("inspirational", "✨")
-        ]
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
+                // Заголовок
                 VStack(spacing: 8) {
                     Text("What makes you")
                         .font(.title)
@@ -49,21 +38,21 @@ struct CategoriesView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
                 
+                // Список тем
                 VStack(spacing: 12) {
-                    ForEach(categories, id: \.0) { category in
+                    ForEach(QuoteTheme.allCases) { theme in
                         CategoryButton(
-                            title: category.0,
-                            emoji: category.1,
-                            isSelected: tempSelectedCategories.contains(category.0),
+                            title: theme.displayName,
+                            emoji: theme.emoji,
+                            isSelected: tempSelectedThemes.contains(theme),
                             action: {
-                                if tempSelectedCategories.contains(category.0) {
-                                    tempSelectedCategories.remove(category.0)
+                                if tempSelectedThemes.contains(theme) {
+                                    tempSelectedThemes.remove(theme)
                                 } else {
-                                    tempSelectedCategories.insert(category.0)
+                                    tempSelectedThemes.insert(theme)
                                 }
                             }
                         )
-                        
                     }
                 }
                 .padding(.horizontal)
@@ -74,24 +63,24 @@ struct CategoriesView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
                 
+                // Кнопка "Done"
                 Button(action: {
-                    onSave(tempSelectedCategories)
+                    onSave(tempSelectedThemes)
                     dismiss()
                 }) {
                     Text("done")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.black)
                         .frame(width: 120, height: 44)
-                        .background(tempSelectedCategories.isEmpty ? Color.gray : Color.appGreen)
+                        .background(tempSelectedThemes.isEmpty ? Color.gray : Color.appGreen)
                         .cornerRadius(22)
                 }
-                .disabled(tempSelectedCategories.isEmpty)
-                .opacity(tempSelectedCategories.isEmpty ? 0.6 : 1.0)
+                .disabled(tempSelectedThemes.isEmpty)
+                .opacity(tempSelectedThemes.isEmpty ? 0.6 : 1.0)
                 .padding(.bottom, 40)
             }
             .navigationTitle("Categories")
             .navigationBarTitleDisplayMode(.inline)
-            
         }
     }
 }

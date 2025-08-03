@@ -20,17 +20,17 @@ enum QuotesError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .unauthorized:
-            return "Неверный API ключ. Проверьте настройки."
+            return "Incorrect API key. Check the settings."
         case .rateLimitExceeded:
-            return "Превышен лимит запросов. Попробуйте позже."
+            return "Request limit exceeded. Try again later."
         case .serverError(let code):
-            return "Ошибка сервера (код: \(code))"
+            return "Server Fault (code: \(code))"
         case .decodingFailed:
-            return "Не удалось обработать ответ сервера"
+            return "Failed to process server response"
         case .noQuotesFound:
-            return "Цитаты не найдены"
+            return "Quotes not found"
         case .invalidURL:
-            return "Неверный URL запроса"
+            return "Incorrect request URL"
         case .invalidCategory:
             return "Unsupported category"
         }

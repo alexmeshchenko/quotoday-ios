@@ -13,14 +13,14 @@ class HomeViewModel: ObservableObject {
     @Published var quotes: [Quote] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-    @Published var selectedCategories: Set<String> = []
+    @Published var selectedThemes: Set<QuoteTheme> = []
     
     private var cancellables = Set<AnyCancellable>()
     private let quotesService = QuotesService.shared
     
     init() {
         // Загружаем выбранные категории из UserDefaults
-        //loadSelectedCategories()
+        loadSelectedThemes()
         // Загружаем начальные цитаты
         Task {
             await loadQuotes()
@@ -35,18 +35,19 @@ class HomeViewModel: ObservableObject {
         
         do {
             // Если есть выбранные категории, загружаем по ним
-            if !selectedCategories.isEmpty {
+            if !selectedThemes.isEmpty {
+                let categories = Set(selectedThemes.flatMap { $0.categories })
                 // Загружаем цитаты из выбранных категорий
                 self.quotes = try await quotesService.fetchQuotes(
-                    categories: selectedCategories,
-                    count: min(selectedCategories.count, 3) // Максимум 3 цитаты
+                    categories: categories,
+                    count: min(selectedThemes.count, 3) // Максимум 3 цитаты
                 )
             } else {
                 // Загружаем случайные цитаты
                 self.quotes = try await quotesService.fetchRandomQuotes(count: 2)
             }
         } catch {
-            errorMessage = "Не удалось загрузить цитаты: \(error.localizedDescription)"
+            errorMessage = "Could not load quotes: \(error.localizedDescription)"
         }
         
         isLoading = false
@@ -67,21 +68,24 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    // Сохранение выбранных категорий
-    func saveSelectedCategories(_ categories: Set<String>) {
-        selectedCategories = categories
-        UserDefaults.standard.set(Array(categories), forKey: "selectedCategories")
+    // Сохранение выбранных тем
+    func saveSelectedThemes(_ themes: Set<QuoteTheme>) {
+        selectedThemes = themes
         
-        // Перезагружаем цитаты с новыми категориями
+        // Сохраняем как массив строк
+        let rawValues = Array(themes.map(\.rawValue))
+        UserDefaults.standard.set(rawValues, forKey: "selectedThemes")
+        
         Task {
             await loadQuotes()
         }
     }
     
-    // Загрузка выбранных категорий
-    private func loadSelectedCategories() {
-        if let savedCategories = UserDefaults.standard.array(forKey: "selectedCategories") as? [String] {
-            selectedCategories = Set(savedCategories)
+    // Загрузка выбранных тем
+    private func loadSelectedThemes() {
+        if let rawValues = UserDefaults.standard.array(forKey: "selectedThemes") as? [String] {
+            let themes = rawValues.compactMap { QuoteTheme(rawValue: $0) }
+            selectedThemes = Set(themes)
         }
     }
 }
