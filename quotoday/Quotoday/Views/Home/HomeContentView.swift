@@ -54,12 +54,18 @@ struct HomeContentView: View {
                                     }
                                 }
                             )
-                            .transition(.scale.combined(with: .opacity))
+                            .transition(
+                                .asymmetric(
+                                    insertion: .move(edge: .trailing).combined(with: .opacity),
+                                    removal: .move(edge: .leading).combined(with: .opacity)
+                                )
+                            )
                         }
                     }
                     .padding(.horizontal)
                     .padding(.top)
                     .padding(.bottom, 70) // Отступ для TabBar
+                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: searchText)
                 } // else
             }
             .padding(.top)
