@@ -21,13 +21,40 @@ struct MyQuotesView: View {
                         .fontWeight(.bold)
                         .padding()
                     
-                    ScrollView {
-                        LazyVStack(spacing: 12) {
-                            ForEach(viewModel.userQuotes) { quote in
-                                UserQuoteCard(quote: quote)
-                            }
+                    if viewModel.userQuotes.isEmpty {
+                        // Пустое состояние
+                        VStack(spacing: 16) {
+                            Spacer()
+                            Image(systemName: "quote.bubble")
+                                .font(.system(size: 60))
+                                .foregroundColor(.secondary)
+                            
+                            Text("No quotes")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                            
+                            Text("Press '+' to add your first quote")
+                                .font(.subheadline)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal, 40)
+                            Spacer()
                         }
-                        .padding(.horizontal)
+                    } else {
+                        ScrollView {
+                            LazyVStack(spacing: 12) {
+                                ForEach(viewModel.userQuotes) { quote in
+                                    UserQuoteCard(quote: quote, viewModel: viewModel)
+                                        .transition(.asymmetric(
+                                            insertion: .move(edge: .trailing).combined(with: .opacity),
+                                            removal: .move(edge: .leading).combined(with: .opacity)
+                                        ))
+                                }
+                            }
+                            .padding(.horizontal)
+                            .padding(.bottom, 70) // Отступ для TabBar
+                            .animation(.spring(response: 0.3), value: viewModel.userQuotes.count)
+                        }
                     }
                 }
                 
@@ -43,15 +70,16 @@ struct MyQuotesView: View {
                                 .frame(width: 60, height: 60)
                                 .background(Color.appGreen)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .shadow(radius: 4)
                         }
-                        .padding()
+                        .padding(.bottom, 80)
+                        .padding(.trailing, 10)
                     }
                 }
             }
-            .padding(.bottom, 70) // Отступ для TabBar
             .navigationBarHidden(true)
             .sheet(isPresented: $showAddQuote) {
-                AddQuoteView()
+                AddQuoteView(viewModel: viewModel)
             }
         }
     }

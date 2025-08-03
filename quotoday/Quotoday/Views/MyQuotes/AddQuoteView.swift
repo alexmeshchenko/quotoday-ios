@@ -13,11 +13,10 @@ import SwiftUI
 // MARK: - Add Quote View
 struct AddQuoteView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: MyQuotesViewModel
+    @ObservedObject var viewModel: MyQuotesViewModel
     
     @State private var quoteText = ""
     @State private var authorText = ""
-    @State private var showAlert = false
     
     var body: some View {
         NavigationView {
@@ -51,19 +50,13 @@ struct AddQuoteView: View {
                     .disabled(quoteText.isEmpty || authorText.isEmpty)
                 }
             }
-            .alert("Success!", isPresented: $showAlert) {
-                Button("OK") {
-                    dismiss()
-                }
-            } message: {
-                Text("Quote successfully added")
-            }
         }
     }
     
     func saveQuote() {
-        viewModel.addQuote(text: quoteText.trimmingCharacters(in: .whitespacesAndNewlines),
-                           author: authorText.trimmingCharacters(in: .whitespacesAndNewlines))
-        showAlert = true
+        viewModel.addQuote(
+            text: quoteText.trimmingCharacters(in: .whitespacesAndNewlines),
+            author: authorText.trimmingCharacters(in: .whitespacesAndNewlines))
+        dismiss()
     }
 }

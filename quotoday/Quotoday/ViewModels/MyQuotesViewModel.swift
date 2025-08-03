@@ -66,4 +66,10 @@ class MyQuotesViewModel: ObservableObject {
             saveQuotes()
         }
     }
+    
+    // Удаление конкретной цитаты
+    func deleteQuote(_ quote: UserQuote) {
+        userQuotes.removeAll { $0.id == quote.id }
+        saveQuotes()
+    }
 }
