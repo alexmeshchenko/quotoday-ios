@@ -27,15 +27,11 @@ struct FavoriteQuoteCard: View {
                 .foregroundColor(.secondary)
             
             HStack {
+                
                 // Зеленая метка избранного
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.appGreen)
-                    .frame(width: 30, height: 30)
-                    .overlay(
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 14))
-                    )
+                Image(systemName: "bookmark.fill")
+                    .font(.system(size: 22))
+                    .foregroundColor(Color.appGreen)
                 
                 Spacer()
                 
@@ -58,7 +54,7 @@ struct FavoriteQuoteCard: View {
             Button(action: {
                 favoritesManager.removeFromFavorites(quote)
             }) {
-                Label("Удалить из избранного", systemImage: "star.slash")
+                Label("Удалить из избранного", systemImage: "bookmark")
             }
         }
         .sheet(isPresented: $showShareSheet) {

@@ -31,8 +31,7 @@ struct HomeView: View {
                     )
                 } else {
                     HomeContentView(
-                        quotes: viewModel.quotes,
-                        favoritesManager: favoritesManager,
+                        favoritesManager: favoritesManager, quotes: viewModel.quotes,
                         onRefresh: viewModel.refreshQuote
                     )
                 }

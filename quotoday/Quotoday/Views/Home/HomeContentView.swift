@@ -9,8 +9,8 @@ import SwiftUI
 
 // MARK: - Content View
 struct HomeContentView: View {
+    @ObservedObject var favoritesManager: FavoritesManager
     let quotes: [Quote]
-    let favoritesManager: FavoritesManager
     let onRefresh: (Int) async -> Void
     
     var body: some View {
@@ -38,7 +38,9 @@ struct HomeContentView: View {
                         .transition(.scale.combined(with: .opacity))
                     }
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.top)
+                .padding(.bottom, 60) // Отступ для TabBar
             }
         }
     }

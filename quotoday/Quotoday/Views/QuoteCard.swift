@@ -25,7 +25,7 @@ struct QuoteCard: View {
                 .foregroundColor(.black)
                 .padding(.horizontal, 24)
                 .padding(.top, 40)
-                //.frame(maxWidth: .infinity, minHeight: 200)
+            //.frame(maxWidth: .infinity, minHeight: 200)
             
             // Автор
             if !quote.author.isEmpty {
@@ -46,6 +46,19 @@ struct QuoteCard: View {
                         .foregroundColor(.black.opacity(0.7))
                 }
                 .buttonStyle(PlainButtonStyle())
+                
+                Spacer()
+                
+                // Категория по центру
+                Text(quote.category.capitalized)
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.black.opacity(0.5))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(
+                        Capsule()
+                            .fill(Color.black.opacity(0.08))
+                    )
                 
                 Spacer()
                 

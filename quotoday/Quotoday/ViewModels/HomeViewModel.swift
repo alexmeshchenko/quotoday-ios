@@ -20,7 +20,7 @@ class HomeViewModel: ObservableObject {
     
     init() {
         // Загружаем выбранные категории из UserDefaults
-        loadSelectedCategories()
+        //loadSelectedCategories()
         // Загружаем начальные цитаты
         Task {
             await loadQuotes()
@@ -36,14 +36,11 @@ class HomeViewModel: ObservableObject {
         do {
             // Если есть выбранные категории, загружаем по ним
             if !selectedCategories.isEmpty {
-                // Загружаем по одной цитате для каждой категории
-                var allQuotes: [Quote] = []
-                for category in selectedCategories {
-                    if let quote = try await quotesService.fetchQuote(category: category) {
-                        allQuotes.append(quote)
-                    }
-                }
-                self.quotes = allQuotes
+                // Загружаем цитаты из выбранных категорий
+                self.quotes = try await quotesService.fetchQuotes(
+                    categories: selectedCategories,
+                    count: min(selectedCategories.count, 3) // Максимум 3 цитаты
+                )
             } else {
                 // Загружаем случайные цитаты
                 self.quotes = try await quotesService.fetchRandomQuotes(count: 2)

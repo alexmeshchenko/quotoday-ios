@@ -33,6 +33,7 @@ struct FavoritesView: View {
                             }
                         }
                         .padding(.horizontal)
+                        .padding(.bottom, 60) // Отступ для TabBar
                     }
                 }
             }

@@ -48,6 +48,7 @@ struct MyQuotesView: View {
                     }
                 }
             }
+            .padding(.bottom, 70) // Отступ для TabBar
             .navigationBarHidden(true)
             .sheet(isPresented: $showAddQuote) {
                 AddQuoteView()
