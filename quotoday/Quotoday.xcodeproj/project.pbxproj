@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		79849B242E3F8A35004071D8 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79849B232E3F8A35004071D8 /* Config.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		79766B002E3E47BB00DD8841 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -28,6 +32,7 @@
 		79766AFF2E3E47BB00DD8841 /* QuotodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79766B092E3E47BB00DD8841 /* QuotodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79766B422E3E584A00DD8841 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
+		79849B232E3F8A35004071D8 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -76,6 +81,7 @@
 		79766AE92E3E47B700DD8841 = {
 			isa = PBXGroup;
 			children = (
+				79849B232E3F8A35004071D8 /* Config.plist */,
 				79766B422E3E584A00DD8841 /* README.md */,
 				79766AF42E3E47B700DD8841 /* Quotoday */,
 				79766B022E3E47BB00DD8841 /* QuotodayTests */,
@@ -214,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79849B242E3F8A35004071D8 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

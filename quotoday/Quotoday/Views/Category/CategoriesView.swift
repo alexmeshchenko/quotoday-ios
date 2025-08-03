@@ -17,13 +17,13 @@ struct CategoriesView: View {
     @State private var tempSelectedCategories: Set<String> = []
     
     let categories = [
-        ("Family", "👨‍👩‍👧‍👦"),
-        ("Friends", "👥"),
-        ("Work", "💼"),
-        ("Health", "🏃‍♂️"),
-        ("Love", "❤️"),
-        ("Other", "✨")
-    ]
+            ("happiness", "😊"),
+            ("motivation", "💪"),
+            ("life", "🌱"),
+            ("love", "❤️"),
+            ("success", "🏆"),
+            ("inspirational", "✨")
+        ]
     
     var body: some View {
         NavigationView {
