@@ -2,109 +2,107 @@
 
 ![Quotoday Banner](Banner.jpeg)
 
-iOS-приложение для ежедневной мотивации с возможностью просмотра, сохранения и создания собственных вдохновляющих цитат.
+An iOS app for daily motivation featuring the ability to browse, save, and create your own inspiring quotes.
 
-## 🎯 О проекте
+## 🎯 About the Project
 
-**Quotoday** – это приложение, которое дарит вдохновение каждый день! Получайте мощные цитаты от великих мыслителей, предпринимателей и писателей, которые помогут вам двигаться к своим целям. Настройте уведомления, выбирайте любимые категории и делитесь мудрыми словами с друзьями.
+**Quotoday** is an app that delivers inspiration every day! Get powerful quotes from great thinkers, entrepreneurs, and writers to help you move towards your goals. Set up notifications, choose your favorite categories, and share wise words with friends.
 
-## ✨ Функциональность
+## ✨ Features
 
-### Базовый уровень:
-- 🔍 Поиск цитат по ключевым словам
-- 📂 Фильтрация по категориям (Family, Friends, Work, Health, Love, Other)
-- 🔄 Обновление цитаты одним нажатием
-- 💫 Плавные анимации при взаимодействии
+### Core Features:
+- 🔍 Search quotes by keywords
+- 📂 Filter by categories (Family, Friends, Work, Health, Love, Other)
+- 🔄 Refresh quotes with a single tap
+- 💫 Smooth animations throughout the interface
 
-### Продвинутый уровень:
-- ⭐ Сохранение цитат в избранное
-- ✏️ Создание собственных цитат
-- 📤 Возможность поделиться цитатой
-- 📅 История добавленных цитат с датой
+### Advanced Features:
+- ⭐ Save quotes to favorites
+- ✏️ Create your own custom quotes
+- 📤 Share quotes with others
+- 📅 History of added quotes with timestamps
 
-## 🛠 Технологии
+## 🛠 Technology Stack
 
-- **SwiftUI** - для создания пользовательского интерфейса
-- **MVVM** - архитектурный паттерн
-- **Combine** - для реактивного программирования
-- **Core Data** - для локального хранения данных
-- **URLSession** - для работы с сетевыми запросами
+- **SwiftUI** - Modern declarative UI framework
+- **MVVM** - Architectural pattern for clean code separation
+- **Combine** - Reactive programming framework
+- **Core Data** - Local data persistence
+- **URLSession** - Network layer for API integration
 
-## 📱 Экраны приложения
+## 📱 App Screens
 
-1. **Главный экран** - отображение случайных цитат из API
-2. **Избранное** - сохраненные пользователем цитаты
-3. **Мои цитаты** - цитаты, созданные пользователем
-4. **Категории** - выбор интересующих категорий
+1. **Home Screen** - Display random quotes from the API
+2. **Favorites** - User's saved quotes collection
+3. **My Quotes** - Custom quotes created by the user
+4. **Categories** - Browse quotes by topic of interest
+   
+## 🚀 Installation & Setup
 
-## 🚀 Установка и запуск
-
-1. Клонируйте репозиторий:
+1. Clone the repository:
 ```bash
 git clone git@github.com:alexmeshchenko/quotoday-ios.git
 ```
 
-2. Откройте проект в Xcode:
+2. Open the project in Xcode:
 ```bash
 cd quotoday-ios
 open Quotoday.xcodeproj
 ```
 
-3. Выберите симулятор или устройство и нажмите Run (⌘+R)
+3. Select a simulator or device and press Run (⌘+R)
 
-## 🔧 Настройка API
+## 🔧 API Configuration
 
-Приложение использует [API Ninjas Quotes](https://api-ninjas.com/api/quotes) для получения цитат.
+The app uses [API Ninjas Quotes](https://api-ninjas.com/api/quotes) to fetch quotes.
 
-Для работы с API необходимо:
-1. Зарегистрироваться на [api-ninjas.com](https://api-ninjas.com)
-2. Получить API ключ
-3. Добавить ключ в файл конфигурации проекта
+To set up the API:
+1. Register at [api-ninjas.com](https://api-ninjas.com)
+2. Obtain your API key
+3. Add the key to the project configuration file
 
-## 📸 Скриншоты
+## 📸 Screenshots
 
-[Добавить скриншоты приложения]
+[Add app screenshots here]
 
-## 🎨 Дизайн
+## 🎨 Design
 
-Дизайн приложения выполнен в Figma: [Ссылка на макет](https://www.figma.com/design/2CWoVZ68Usagh7GhMMhEiq/Quotoday?node-id=0-1&t=6KPxI3zq6uBYq1OJ-1)
+App design created in Figma: [Design Link](https://www.figma.com/design/2CWoVZ68Usagh7GhMMhEiq/Quotoday?node-id=0-1&t=6KPxI3zq6uBYq1OJ-1)
 
-Благодарность [DevRush](https://devrush.eduonline.io/) за предоставленный дизайн!
+Special thanks to [DevRush](https://devrush.eduonline.io/) for providing the design!
 
-### Цветовая палитра:
-- Основной акцент: `#C4E538` (ярко-зеленый)
-- Фон карточек: `#E8F5B7` (светло-желтый)
-- Текст: черный и серый
+### Color Palette:
+- Primary accent: `#C4E538` (bright green)
+- Card background: `#E8F5B7` (light yellow)
+- Text: black and gray variants
 
-## 📋 Требования
+## 📋 Requirements
 
 - iOS 18.0+
 - Xcode 16.4+
 - Swift 6+
 
-## 🤝 Вклад в проект
+## 🤝 Contributing
 
-Буду рад вашим предложениям по улучшению проекта! 
+I welcome contributions to improve the project!
 
-1. Fork репозитория
-2. Создайте ветку для новой функциональности (`git checkout -b feature/AmazingFeature`)
-3. Commit изменения (`git commit -m 'Add some AmazingFeature'`)
-4. Push в ветку (`git push origin feature/AmazingFeature`)
-5. Откройте Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Лицензия
+## 📄 License
 
-Распространяется под лицензией MIT. Подробнее см. файл `LICENSE`.
+Distributed under the MIT License. See `LICENSE` file for more information.
 
-## 👨‍💻 Автор
+## 👨‍💻 Author
 
-**[Ваше имя]**
 - GitHub: [@alexmeshchenko](https://github.com/alexmeshchenko)
 - Email: alex.meshchenko@gmail.com
 
-## 🙏 Благодарности
+## 🙏 Acknowledgments
 
-- [API Ninjas](https://api-ninjas.com) за предоставление API с цитатами
-- [DevRush](https://devrush.eduonline.io/) за дизайн и учебные материалы
-
+- [API Ninjas](https://api-ninjas.com) for providing the quotes API
+- [DevRush](https://devrush.eduonline.io/) for design and learning materials
 ---
